@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const { text } = require("express");
-const { validate } = require("node-cron");
+// const { text } = require("express");
+// const { validate } = require("node-cron");
 const PASSWORDLENGTH = 8;
 
 const imageFrameSchema = mongoose.Schema({

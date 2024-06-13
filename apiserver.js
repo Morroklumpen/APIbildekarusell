@@ -1,14 +1,17 @@
+//
 require("dotenv").config();
 
 // cleanup
 const appEventHandler = require("./handlers/appEventHandler");
+
+//  verdens mest brukte rammeverk express
 const express = require("express");
 const app = express();
 
 // routes!
 const user_api = require("./routes/api_user_routes");
 
-// vedlikehold
+// vedlikehold hiver ut sesjoner som har gått ut på tid via redis
 const { startScheduler } = require("./services/scheduler");
 
 // redis (håndtering av sesjoner (session management))
