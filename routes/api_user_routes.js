@@ -11,13 +11,13 @@ const {
   loginuser,
   logoutuser,
   createimageframe,
-  getUserQuotes,
+  getRandomUserImageFrame,
   removeQuote,
   deleteuser,
   upgradeuser,
   refreshUser,
   getMyImageFrames,
-  getRandomQuote,
+  getRandomImageFrame,
 } = require("../controllers/usercontroller");
 
 // all users
@@ -25,8 +25,8 @@ const {
 router.post("/get-imageframes", authenticate, getMyImageFrames);
 router.post("/create-imageframe", authenticate, createimageframe);
 
-router.get("/", getRandomQuote);
-router.get("/:username", getUserQuotes);
+router.get("/randomImageFrame", getRandomImageFrame);
+router.get("/:username", getRandomUserImageFrame);
 
 // router.get("/random", getRandomQuote);
 

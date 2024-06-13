@@ -157,7 +157,7 @@ const refreshUser = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const getRandomQuote = async (req, res) => {
+const getRandomImageFrame = async (req, res) => {
   //const { user } = req.body;
   let feedback = createFeedback(404, "Faulty inputdata");
 
@@ -166,7 +166,7 @@ const getRandomQuote = async (req, res) => {
     const rndUsers = await User.aggregate([
       {
         $match: {
-          quotes: {
+          imageFrames: {
             $exists: true,
             $ne: [],
           },
@@ -180,22 +180,24 @@ const getRandomQuote = async (req, res) => {
     ]);
 
     // check if user has quotes
-    if (rndUsers.length === 0 || rndUsers[0].quotes.length === 0) {
+    if (rndUsers.length === 0 || rndUsers[0].imageFrames.length === 0) {
       sendresponse(res, createFeedback(404, "No quotes found in the database"));
       return;
     }
     const rndUser = rndUsers[0];
 
     // get random quote
-    const rndQuote =
-      rndUser.quotes[Math.floor(Math.random() * rndUser.quotes.length)];
+    const rndImageFrame =
+      rndUser.imageFrames[
+        Math.floor(Math.random() * rndUser.imageFrames.length)
+      ];
 
     // create feedback
     feedback = createFeedback(
       200,
       "Random quote found in the database",
       true,
-      rndQuote
+      rndImageFrame
     );
   } catch (err) {
     console.log(err);
@@ -241,20 +243,24 @@ const getMyImageFrames = async (req, res) => {
  * @param {*} res
  **/
 
-const getUserQuotes = async (req, res) => {
+const getRandomUserImageFrame = async (req, res) => {
   const { username } = req.params;
   let feedback = createFeedback(404, "Faulty inputdata", false, [], username);
   const user = await User.findOne({ username: username });
 
   if (typeof username !== "undefined" && user != null) {
-    const quotes = user.quotes;
+    const imageFrames = user.imageFrames;
 
     try {
+      const rndImageFrame =
+        user.imageFrames[Math.floor(Math.random() * user.imageFrames.length)];
+
       feedback = createFeedback(
         200,
-        "Quotes found in the database for user " + username,
+        "Image frames found in the database for user " + username,
         true,
-        quotes
+        rndImageFrame,
+        username
       );
     } catch (err) {
       console.log(err);
@@ -416,6 +422,6 @@ module.exports = {
   upgradeuser,
   refreshUser,
   getMyImageFrames,
-  getRandomQuote,
-  getUserQuotes,
+  getRandomImageFrame,
+  getRandomUserImageFrame,
 };
