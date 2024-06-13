@@ -1,0 +1,34 @@
+{
+  "name": "login-api",
+  "version": "1.0.0",
+  "description": "simple demonstration of a backend api that requires authentication and authorization",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pontifex-Programmerer/login-api.git"
+  },
+  "keywords": [
+    "mongoose",
+    "express",
+    "jwt",
+    "json"
+  ],
+  "author": "Geir Hilmersen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pontifex-Programmerer/login-api/issues"
+  },
+  "homepage": "https://github.com/Pontifex-Programmerer/login-api#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.2",
+    "node-cron": "^3.0.3",
+    "redis": "^4.6.14"
+  }
+}
