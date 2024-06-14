@@ -1,7 +1,7 @@
 //
 require("dotenv").config();
 
-// cleanup
+// cleanup graceful shutdown
 const appEventHandler = require("./handlers/appEventHandler");
 
 //  verdens mest brukte rammeverk express
